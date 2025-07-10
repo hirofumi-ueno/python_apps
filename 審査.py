@@ -80,12 +80,14 @@ def keiba(money, vip_mode=False):
     money -= bet
 
     if vip_mode:
+        # VIPは超高倍率だが超激ムズ（0の重み大きめ、100倍も小さい）
         multiplier = random.choices(
-            [0, 1.5, 3, 10, 30, 100], weights=[60, 10, 10, 10, 5, 5]
+            [0, 1.5, 3, 10, 30, 100], weights=[85, 7, 4, 2, 1.5, 0.5]
         )[0]
     else:
+        # 通常モードはそこそこ厳しいけど高倍率もある
         multiplier = random.choices(
-            [0, 0.5, 2, 5, 10, 30], weights=[30, 20, 20, 15, 10, 5]
+            [0, 0.1, 0.5, 1, 2, 5, 10], weights=[60, 15, 10, 8, 4, 2, 1]
         )[0]
 
     if multiplier == 0:
